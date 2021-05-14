@@ -1,5 +1,10 @@
 # HowCom
 
+## repository 만들기
+```angular2html
+git clone https://github.com/hannahf97/HowCom.git
+cd HowCom
+```
 ## 수정한 내용 업로드(Push) 하기
 + 풀(pull) -> 커밋(commit) -> 업로드(push)로 진행
 
