@@ -1,0 +1,55 @@
+<html lang="ko">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta charset="UTF-8" />
+	<title>HOWCOM</title>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="code.js"></script>
+	<style src="styles.css"></style>
+	<style>
+		table {
+			border-spacing: 0px;
+			table-layout: auto;
+			margin-left: 0;
+			margin-right: 0;
+		}
+		td {
+			word-wrap: normal;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<table>
+			<tbody>
+				<tr>
+					<td id="question">문제 출력창</td>
+				</tr>
+			</tbody>
+		</table>
+		<table>
+			<tbody>
+				<tr>
+					<td width=30px><input type="button" id="answerFirstButton" value="1" onclick=""></td>
+					<!-- Onclick 은 인자로 ID가 넘어온다면, 여러 메소드가 아니라 한 메소드에서 처리가 가능하겠다 -->
+					<td id="answerFirst">1번 선택지</td>
+				</tr>
+				<tr>
+					<td width=30px><input type="button" id="answerSecondButton" value="2" onclick=""></td>
+					<td id="answerSecond">2번 선택지</td>
+				</tr>
+				<tr>
+					<td width=30px><input type="button" id="answerThirdButton" value="3" onclick=""></td>
+					<td id="answerThird">3번 선택지</td>
+				</tr>
+				<tr>
+					<td width=30px><input type="button" id="answerFourthutton" value="4" onclick=""></td>
+					<td id="answerFourth">4번 선택지</td>
+				</tr>
+			</tbody>
+		</table>
+		<input type="button" id="btn1" value="이전 문제" onclick="getPreviousQuestion">
+		<input type="button" id="btn2" value="다음 문제" onclick="getNextQuestion">
+	</div>
+</body>
+</html>
