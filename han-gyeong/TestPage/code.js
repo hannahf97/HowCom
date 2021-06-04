@@ -9,7 +9,7 @@ window.onload = function() {
 }
 
 var data;
-var orderQuestion = 0;
+var orderQuestion = -1;
 
 function getQuestion() {
 	var url = "data.json";
@@ -29,6 +29,7 @@ function updateInfo(questionNumber) {
 }
 	
 function insertTable(questionNumber, question, answerFirst, answerSecond, answerThird, answerFourth) {
+	console.log(questionNumber);
 	var question1 = document.getElementById("question");
 	question1.innerHTML = (questionNumber + 1) + ". " + question;
 
@@ -49,6 +50,13 @@ function getPreviousQuestion() {
 	var previousButton = document.getElementById("btn1");
 	previousButton.addEventListener("click", function() {
 		orderQuestion -= 1;
+		
+		if (orderQuestion < 0) {
+			alert("첫 문제입니다.");
+			orderQuestion = -1;
+			return;
+		}
+
 		updateInfo(orderQuestion);
 	});
 }
@@ -56,7 +64,16 @@ function getPreviousQuestion() {
 function getNextQuestion() {
 	var nextButton = document.getElementById("btn2");
 	nextButton.addEventListener("click", function() {
+		orderQuestion += 1;
 		updateInfo(orderQuestion);
-		orderQuestion++;
 	});
+}
+
+function getAnswerButtonListener(btn) {
+	switch (btn) {
+		case 1: alert("1번 버튼을 눌렀습니다."); break;
+		case 2: alert("2번 버튼을 눌렀습니다."); break;
+		case 3: alert("3번 버튼을 눌렀습니다."); break;
+		case 4: alert("4번 버튼을 눌렀습니다."); break;
+	}
 }

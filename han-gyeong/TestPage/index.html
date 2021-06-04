@@ -3,10 +3,35 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta charset="UTF-8" />
 	<title>HOWCOM</title>
+	<style src="styles.css"></style>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script src="code.js"></script>
-	<style src="styles.css"></style>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/js/bootstrap-select.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/css/bootstrap-select.min.css">
+
 	<style>
+		* {
+			font-family: 'Nanum Gothic', sans-serif;
+		}
+		.problem {
+			width: 1000px;
+			height: 500px;
+			margin : auto;
+			background-color: #D3D3D3;
+			border-radius: 15px;
+			padding : 20px;
+			margin-top: 10px;
+		}
+
+		.showQuestion {
+			font-weight: bold;
+		}
+
 		table {
 			border-spacing: 0px;
 			table-layout: auto;
@@ -19,31 +44,37 @@
 	</style>
 </head>
 <body>
-	<div>
+	<nav class="navbar navbar-light bg-light">
+		<a class="navbar-brand" href="#">
+		  <img src="/images/logo.png" width="150" height="50" alt="">
+		</a>
+	  </nav>
+	<div class="problem">
 		<table>
 			<tbody>
 				<tr>
-					<td id="question">문제 출력창</td>
+					<td id="question" class="showQuestion">문제 출력창</td>
 				</tr>
 			</tbody>
 		</table>
 		<table>
 			<tbody>
 				<tr>
-					<td width=30px><input type="button" id="answerFirstButton" value="1" onclick=""></td>
+					<hr>
+					<td width=30px><input type="button" id="answerFirstButton" value="1" onclick="getAnswerButtonListener(1)"></td>
 					<!-- Onclick 은 인자로 ID가 넘어온다면, 여러 메소드가 아니라 한 메소드에서 처리가 가능하겠다 -->
 					<td id="answerFirst">1번 선택지</td>
 				</tr>
 				<tr>
-					<td width=30px><input type="button" id="answerSecondButton" value="2" onclick=""></td>
+					<td width=30px><input type="button" id="answerSecondButton" value="2" onclick="getAnswerButtonListener(2)"></td>
 					<td id="answerSecond">2번 선택지</td>
 				</tr>
 				<tr>
-					<td width=30px><input type="button" id="answerThirdButton" value="3" onclick=""></td>
+					<td width=30px><input type="button" id="answerThirdButton" value="3" onclick="getAnswerButtonListener(3)"></td>
 					<td id="answerThird">3번 선택지</td>
 				</tr>
 				<tr>
-					<td width=30px><input type="button" id="answerFourthutton" value="4" onclick=""></td>
+					<td width=30px><input type="button" id="answerFourthutton" value="4" onclick="getAnswerButtonListener(4)"></td>
 					<td id="answerFourth">4번 선택지</td>
 				</tr>
 			</tbody>
