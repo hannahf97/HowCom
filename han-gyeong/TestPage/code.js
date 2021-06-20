@@ -44,7 +44,7 @@ function fetchData(questionNumber) {
 }
 
 function insertData(data) {
-  var question1 = document.getElementById("question");
+  var question1 = document.getElementById("questionNumber");
   question1.innerHTML = data[0] + 1 + ". " + data[1];
 
   var td1 = document.getElementById("answerFirst");

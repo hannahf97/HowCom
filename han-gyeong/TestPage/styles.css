@@ -1,43 +1,46 @@
-table {
-    border-spacing: 0px;
-    border-collapse: separate;
-  }
+* {
+  font-family: 'Nanum Gothic', sans-serif;
+}
 
-  .e115_225 { 
-    overflow:hidden;
-  }
-  .e115_225 { 
-    background-color:rgba(255, 255, 255, 1);
-    width:1440px;
-    height:2048px;
-    position:absolute;
-  }
-  .e115_229 { 
-    width:1440px;
-    height:125px;
-    position:absolute;
-    left:-9px;
-    top:-3px;
-  }
-  .e115_230 { 
-    width:228px;
-    height:69px;
-    position:absolute;
-    left:30px;
-    top:28px;
-    background-image:url(images/kakaotalk_20210429_225118041__1__1.png);
-    background-repeat:no-repeat;
-    background-size:cover;
-  }
-  .e115_231 { 
-    transform: rotate(-0.25111209313170224deg);
-    width:1440.012451171875px;
-    height:0px;
-    position:absolute;
-    left:0px;
-    top:125.3111572265625px;
-  }
-  .115_231 { 
-    border:1px solid rgba(196.00000351667404, 196.00000351667404, 196.00000351667404, 1);
-  }
+.problem {
+  width: 1300px;
+  height: 500px;
+  margin: auto;
+  background-color: #D3D3D3;
+  border-radius: 15px;
+  padding: 20px;
+  margin-top: 10px;
+}
+
+.showQuestion {
+  font-weight: bold;
+}
+
+table {
+  border-spacing: 0px;
+  table-layout: auto;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+td {
+  word-wrap: normal;
+  padding: 5px;
+}
+
+.Buttons {
+  width: 250px;
+  padding-top: 20px;
+  margin: auto;
+}
+
+#answerFirstButton #answerSecondButton #answerThirdButton #answerFourthButton {
+  border: none;
+  outline: none;
+  display: block;
+}
+
+.button:focus {
+  outline: 0;
+}
   
