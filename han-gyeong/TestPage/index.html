@@ -18,8 +18,9 @@
 		* {
 			font-family: 'Nanum Gothic', sans-serif;
 		}
+
 		.problem {
-			width: 1000px;
+			width: 1300px;
 			height: 500px;
 			margin : auto;
 			background-color: #D3D3D3;
@@ -38,9 +39,28 @@
 			margin-left: 0;
 			margin-right: 0;
 		}
+
 		td {
 			word-wrap: normal;
+			padding: 5px;
 		}
+
+		.Buttons {
+			width: 250px;
+			padding-top:20px;
+			margin:auto;
+		}
+
+		#answerFirstButton #answerSecondButton #answerThirdButton #answerFourthButton {
+			border: none;
+			outline : none;
+			display: block;
+		}
+	
+		.button:focus {
+        	outline: 0;
+      	}
+		
 	</style>
 </head>
 <body>
@@ -58,29 +78,31 @@
 			</tbody>
 		</table>
 		<table>
-			<tbody>
+			<tbody class="selectButton">
 				<tr>
 					<hr>
-					<td width=30px><input type="button" id="answerFirstButton" value="1" onclick="getAnswerButtonListener(1)"></td>
+					<td width=30px><input type="button" id="answerFirstButton" value="1" onclick="getAnswerButtonListener(0)"></td>
 					<!-- Onclick 은 인자로 ID가 넘어온다면, 여러 메소드가 아니라 한 메소드에서 처리가 가능하겠다 -->
 					<td id="answerFirst">1번 선택지</td>
 				</tr>
 				<tr>
-					<td width=30px><input type="button" id="answerSecondButton" value="2" onclick="getAnswerButtonListener(2)"></td>
+					<td width=30px><input type="button" id="answerSecondButton" value="2" onclick="getAnswerButtonListener(1)"></td>
 					<td id="answerSecond">2번 선택지</td>
 				</tr>
 				<tr>
-					<td width=30px><input type="button" id="answerThirdButton" value="3" onclick="getAnswerButtonListener(3)"></td>
+					<td width=30px><input type="button" id="answerThirdButton" value="3" onclick="getAnswerButtonListener(2)"></td>
 					<td id="answerThird">3번 선택지</td>
 				</tr>
 				<tr>
-					<td width=30px><input type="button" id="answerFourthutton" value="4" onclick="getAnswerButtonListener(4)"></td>
+					<td width=30px><input type="button" id="answerFourthButton" value="4" onclick="getAnswerButtonListener(3)"></td>
 					<td id="answerFourth">4번 선택지</td>
 				</tr>
 			</tbody>
 		</table>
-		<input type="button" id="btn1" value="이전 문제" onclick="getPreviousQuestion">
-		<input type="button" id="btn2" value="다음 문제" onclick="getNextQuestion">
+		<div class="Buttons">
+		<input type="button" id="previousQuestion" class="btn btn-primary" value="이전 문제">
+		<input type="button" id="nextQuestion" class="btn btn-primary" value="다음 문제">
+		</div>
 	</div>
 </body>
 </html>

@@ -1,79 +1,104 @@
 /*
-1. 답안을 문제랑 매칭시켜야 한다, 답을 하나하나 직접 매칭시켜야 할것같다, 그리고 그걸 저장하는 방식(데이터 변환)을 정해야 한다.
-2. 디자인을 끼워맞춰야 한다.
+TODO
+1. 문제별로 어떤 답을 클릭했었는지, 사용자도 확인이 가능하게?
+2. 답 레이블링? 답을 어떻게 맞출지 고민.
 */
-window.onload = function() {
-	getQuestion();
-	getNextQuestion();
-	getPreviousQuestion();
-}
+
+window.onload = function () {
+  updateData();
+  addPreviousButtonListener();
+  addNextButtonListener();
+
+  buttonList = [
+    document.getElementById("answerFirstButton"),
+    document.getElementById("answerSecondButton"),
+    document.getElementById("answerThirdButton"),
+    document.getElementById("answerFourthButton"),
+  ];
+};
 
 var data;
 var orderQuestion = -1;
+let buttonList;
+var recentlyClickedButton;
+let isButtonPressed = false;
 
-function getQuestion() {
-	var url = "data.json";
-	$.getJSON(url, function(str) {
-		data = str;
-		console.log(data);
-	});
+function updateData() {
+  var url = "data.json";
+  $.getJSON(url, function (str) {
+    data = str;
+    console.log(data);
+  });
 }
 
-function updateInfo(questionNumber) {
-	insertTable(questionNumber, data[questionNumber].question, data[questionNumber].answer[0], data[questionNumber].answer[1], data[questionNumber].answer[2],data[questionNumber].answer[3]);
-	/*
-	for (var i = 0; i < str.length; i++) {
-		insertTable(str[i].question, str[i].answer[0], str[i].answer[1], str[i].answer[2],str[i].answer[3]);
-		}
-*/
-}
-	
-function insertTable(questionNumber, question, answerFirst, answerSecond, answerThird, answerFourth) {
-	console.log(questionNumber);
-	var question1 = document.getElementById("question");
-	question1.innerHTML = (questionNumber + 1) + ". " + question;
-
-	var td1 = document.getElementById("answerFirst")
-	td1.innerHTML = answerFirst;
-
-	var td2 = document.getElementById("answerSecond")
-	td2.innerHTML = answerSecond;
-
-	var td3 = document.getElementById("answerThird")
-	td3.innerHTML = answerThird;
-
-	var td4 = document.getElementById("answerFourth")
-	td4.innerHTML = answerFourth;
+function fetchData(questionNumber) {
+  let returnValue = [
+    questionNumber,
+    data[questionNumber].question,
+    data[questionNumber].answer[0],
+    data[questionNumber].answer[1],
+    data[questionNumber].answer[2],
+    data[questionNumber].answer[3],
+  ];
+  insertData(returnValue);
 }
 
-function getPreviousQuestion() {
-	var previousButton = document.getElementById("btn1");
-	previousButton.addEventListener("click", function() {
-		orderQuestion -= 1;
-		
-		if (orderQuestion < 0) {
-			alert("첫 문제입니다.");
-			orderQuestion = -1;
-			return;
-		}
+function insertData(data) {
+  var question1 = document.getElementById("question");
+  question1.innerHTML = data[0] + 1 + ". " + data[1];
 
-		updateInfo(orderQuestion);
-	});
+  var td1 = document.getElementById("answerFirst");
+  td1.innerHTML = data[2];
+
+  var td2 = document.getElementById("answerSecond");
+  td2.innerHTML = data[3];
+
+  var td3 = document.getElementById("answerThird");
+  td3.innerHTML = data[4];
+
+  var td4 = document.getElementById("answerFourth");
+  td4.innerHTML = data[5];
 }
 
-function getNextQuestion() {
-	var nextButton = document.getElementById("btn2");
-	nextButton.addEventListener("click", function() {
-		orderQuestion += 1;
-		updateInfo(orderQuestion);
-	});
+function addPreviousButtonListener() {
+  var previousButton = document.getElementById("previousQuestion");
+  previousButton.addEventListener("click", function () {
+    orderQuestion -= 1;
+
+    if (orderQuestion < 0) {
+      alert("첫 문제입니다.");
+      orderQuestion = -1;
+      return;
+    }
+
+    if (isButtonPressed) {
+      recentlyClickedButton.style.removeProperty("background-color");
+      isButtonPressed = false;
+    }
+
+    fetchData(orderQuestion);
+  });
+}
+
+function addNextButtonListener() {
+  var nextButton = document.getElementById("nextQuestion");
+  nextButton.addEventListener("click", function () {
+    if (isButtonPressed) {
+      recentlyClickedButton.style.removeProperty("background-color");
+      isButtonPressed = false;
+    }
+
+    orderQuestion += 1;
+    fetchData(orderQuestion);
+  });
 }
 
 function getAnswerButtonListener(btn) {
-	switch (btn) {
-		case 1: alert("1번 버튼을 눌렀습니다."); break;
-		case 2: alert("2번 버튼을 눌렀습니다."); break;
-		case 3: alert("3번 버튼을 눌렀습니다."); break;
-		case 4: alert("4번 버튼을 눌렀습니다."); break;
-	}
+  if (isButtonPressed) {
+    recentlyClickedButton.style.removeProperty("background-color");
+    isButtonPressed = false;
+  }
+  buttonList[btn].style.backgroundColor = "#E35252";
+  recentlyClickedButton = buttonList[btn];
+  isButtonPressed = true;
 }
