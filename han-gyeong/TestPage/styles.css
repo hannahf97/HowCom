@@ -34,6 +34,10 @@ td {
   margin: auto;
 }
 
+#nextQuestion {
+  margin-left: 15px;
+}
+
 #answerFirstButton #answerSecondButton #answerThirdButton #answerFourthButton {
   border: none;
   outline: none;
