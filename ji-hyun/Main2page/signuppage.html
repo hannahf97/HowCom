@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>signuppage</title>
+</head>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js">
+</script>
+<link rel="stylesheet" href="css/signup.css">
+<script type="text/javascript"> //이메일 입력방식 선택
+$('#mail').change(function () {
+    $(
+        "#mail option:selected").each(function () {
+        if ($(this).val() == '1') {//직접입력일 경우
+            $("#str_email02").val('');//값 초기화
+            $("#str_email02").attr("disabled", false); //활성화
+        } else { //직접입력이 아닐경우
+            $("#str_email02").val($(this).text()); //선택값 입력
+            $("#str_email02").attr("disabled", true); //비활성화
+        }
+    });
+});
+</script>
+<body>
+<div id="header">
+    <div id="wrapper">
+        <div id="content">
+            <div>
+                <label for="id">아이디</label>
+                <span class="box int_id">
+			        <input type="text" id="id" class="int" maxlength="20">@
+
+                    <select id="mail">
+                         <option value="1" selected>직접입력</option>
+                        <option value="naver.com" selected>naver.com</option>
+                        <option value="hanmail.net">hanmail.net</option>
+                        <option value="hotmail.com">hotmail.com</option>
+                        <option value="nate.com">nate.com</option>
+                        <option value="yahoo.co.kr">yahoo.co.kr</option>
+                        <option value="empas.com">empas.com</option>
+                        <option value="dreamwiz.com">dreamwiz.com</option>
+                        <option value="freechal.com">freechal.com</option>
+                        <option value="lycos.co.kr">lycos.co.kr</option>
+                        <option value="korea.com">korea.com</option>
+                        <option value="gmail.com">gmail.com</option>
+                        <option value="hanmir.com">hanmir.com</option>
+                        <option value="paran.com">paran.com</option>
+                    </select>
+		        </span>
+                <span class="error_next_box"></span>
+            </div>
+            <!-- BIRTH -->
+            <div>
+                <h3><label for="yy">생년월일</label></h3>
+
+                <div id="bir_wrap">
+
+                    <!-- BIRTH_YY -->
+                    <div id="bir_yy">
+                            <span class="box">
+                                <input type="text" id="yy" class="int" maxlength="4" placeholder="년(4자)">
+                            </span>
+                    </div>
+
+                    <!-- BIRTH_MM -->
+                    <div id="bir_mm">
+                            <span class="box">
+                                <select id="mm">
+                                    <option>월</option>
+                                    <option value="01">1</option>
+                                    <option value="02">2</option>
+                                    <option value="03">3</option>
+                                    <option value="04">4</option>
+                                    <option value="05">5</option>
+                                    <option value="06">6</option>
+                                    <option value="07">7</option>
+                                    <option value="08">8</option>
+                                    <option value="09">9</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                </select>
+                            </span>
+                    </div>
+
+                    <!-- BIRTH_DD -->
+                    <div id="bir_dd">
+                            <span class="box">
+                                <input type="text" id="dd" class="int" maxlength="2" placeholder="일">
+                            </span>
+                    </div>
+
+                </div>
+                <span class="error_next_box"></span>
+            </div>
+            <!-- JOIN BTN-->
+            <div class="btn_area">
+                <button type="button">
+                    <span>가입하기</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+
+
+</html>
