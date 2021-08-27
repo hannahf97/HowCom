@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <!-- Responsive-->
+    <link rel="stylesheet" href="../css/responsive.css">
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+    <!-- Tweaks for older IEs-->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Nanum+Pen+Script&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="../css/login.css">
+    <title> Login </title>
+</head>
+
+<body>
+<header>
+    <!-- header inner -->
+    <div class="header">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
+                    <div class="full">
+                        <div class="center-desk">
+                            <div class="logo">
+                                <a href="main2page.html"><img src="../images/logo.png" alt="#"/></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</header>
+<div method="post" class="loginbackground">
+    <div class="loginForm">
+        <h2>Login</h2>
+        <p id="hello">Welcome, we missed you !</p>
+        <div class="idForm">
+            <label for="post-id">Your Email</label>
+            <input type="text" id="post-id" class="id" placeholder="ID">
+        </div>
+        <div class="passForm">
+            <label for="post-pw">password</label>
+            <input type="password" id="post-pw" class="pw" placeholder="PW">
+        </div>
+
+        <script>
+            let button = () => {
+                alert('login Button !')
+            }
+        </script>
+        <div class="bottomText">
+            Don't you have ID? <a href="#">Forgot Password?</a>
+        </div>
+        <button type="button" class="btn" onclick="button()">
+            Login
+        </button>
+        <div class="line">or continue with</div>
+        <div class="css-1g9jab">
+            <button data-testid="LoginButton" class="css-y2udax">
+                <div class="css-fh7wwz">
+                    <div data-testid="LoginButton-Logo">
+                        카카오톡으로 로그인
+                    </div>
+                </div>
+
+            </button>
+        </div>
+    </div>
+    <div class="right">
+        <h2> 자격증의 세계로 </h2>
+    </div>
+
+</div>
+
+<script src="../js/main2page.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>signuppage</title>
+</head>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js">
+</script>
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="../css/style.css">
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<!-- Responsive-->
+<link rel="stylesheet" href="../css/responsive.css">
+<!-- Scrollbar Custom CSS -->
+<link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+<!-- Tweaks for older IEs-->
+<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+<link rel="stylesheet" type="text/css" href="../css/style.css">
+<link rel="stylesheet" type="text/css" href="../css/login.css">
+<link rel="stylesheet" type="text/css" href="../css/signup.css">
+<script type="text/javascript"> //이메일 입력방식 선택
+$('#mail').change(function () {
+    $(
+        "#mail option:selected").each(function () {
+        if ($(this).val() == '1') {//직접입력일 경우
+            $("#str_email02").val('');//값 초기화
+            $("#str_email02").attr("disabled", false); //활성화
+        } else { //직접입력이 아닐경우
+            $("#str_email02").val($(this).text()); //선택값 입력
+            $("#str_email02").attr("disabled", true); //비활성화
+        }
+    });
+});
+
+    function signup(){
+
+    }
+</script>
+<body>
+<header>
+    <!-- header inner -->
+    <div class="header">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
+                    <div class="full">
+                        <div class="center-desk">
+                            <div class="logo">
+                                <a href="main2page.html"><img src="../images/logo.png" alt="#"/></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</header>
+<div method="post" class="loginbackground">
+    <div class="loginForm">
+        <h2>Sign Up</h2>
+        <p id="hello">계정이 없으신가요? </p>
+
+        <div id="content">
+            <div class="nameForm">
+                <label for="post-name">Full Name</label>
+                <input type="text" id="post-name" class="name" placeholder="Name">
+            </div>
+            <div class="idForm">
+
+                <label for="id">Your Email</label>
+                <span class="box int_id">
+                        <input type="text" id="id" class="int">
+                        <p>@</p>
+                        <select id="mail">
+                             <option value="1" selected>직접입력</option>
+                            <option value="naver.com" selected>naver.com</option>
+                            <option value="hanmail.net">hanmail.net</option>
+                            <option value="hotmail.com">hotmail.com</option>
+                            <option value="nate.com">nate.com</option>
+                            <option value="yahoo.co.kr">yahoo.co.kr</option>
+                            <option value="empas.com">empas.com</option>
+                            <option value="dreamwiz.com">dreamwiz.com</option>
+                            <option value="freechal.com">freechal.com</option>
+                            <option value="lycos.co.kr">lycos.co.kr</option>
+                            <option value="korea.com">korea.com</option>
+                            <option value="gmail.com">gmail.com</option>
+                            <option value="hanmir.com">hanmir.com</option>
+                            <option value="paran.com">paran.com</option>
+                        </select>
+                    </span>
+            </div>
+            <div class="passForm">
+                <label for="post-pw">password</label>
+                <input type="password" id="post-pw" class="pw" placeholder="Enter your password">
+            </div>
+            <div class="passForm">
+                <label for="post-pw-rp">password</label>
+                <input type="password" id="post-pw-rp" class="pw" placeholder="Enter your password">
+            </div>
+
+        </div>
+        <button type="button" class="btn" onclick="signup()">
+            Sign Up
+        </button>
+    </div>
+</div>
+</body>
+
+
+</html>
