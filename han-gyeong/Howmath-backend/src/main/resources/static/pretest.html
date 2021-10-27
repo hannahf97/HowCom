@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="UTF-8" />
+    <title>HOWCOM 진단고사</title>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <style>
+        #problemPage {
+            width: 60%;
+            height: 600px;
+            margin: auto;
+            background-color: #D3D3D3;
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 10px;
+        }
+
+        #username {
+            font-size: 15px;
+            font-style: normal;
+        }
+
+        #question{
+            display: flex;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        #image{
+            display: flex;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        #answer{
+            margin-top: 45px;
+            display: flex;
+            justify-content: center;
+        }
+
+        #inputAnswer {
+            width: 300px;
+            height: 80px;
+            text-align: center;
+        }
+
+        #buttons {
+            margin-top: 40px;
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+    <script>
+        let problem;
+        let answerMap = new Map();
+        let idx = 0;
+        // Array를 여기서 만들어서, $id 로 접근해서 text 가져오고, 그걸 마지막 submit때 POST 하는 방식으로
+        /*
+        1. 페이지가 로드가 되면, API 를 통해 진단고사 문제 리스트를 JSON 형식으로 받아온다.
+        2. JSON 형식의 문제를 리스트에 담아서, 다음 문제를 누를경우 글자를 싹 바꿔주면서도,
+        3. 정답값을 담을 리스트를 새로 만들어서, Map의 형태로 키와 Value 가 매칭되는 형식으로
+        4. 마지막까지 다 풀었을 경우에는, 리스트를 넘겨서 채점을 받자.
+         */
+
+        window.onload = function() { // 페이지가 로드된다면, 받아와서
+            $.ajax({
+                type: "GET",
+                url: `/api/problem?tag=2`,
+                success: function (response) {
+                    problem = response["data"];
+                    printQuestion(0);
+                }
+            });
+        }
+
+        function saveBeforeMove() {
+            let inputText = document.getElementById("inputAnswer").value;
+            if (inputText != null) {
+                answerMap.set(problem[idx].id, inputText);
+            }
+        }
+
+        function nextButton() {
+            saveBeforeMove(problem[idx].id)
+            if (idx < problem.length - 1) {
+                idx++;
+            } else {
+                alert("마지막 문제입니다, Submit 버튼을 눌러 제출해주세요.");
+            }
+            printQuestion(idx);
+        }
+
+        function previousButton() {
+            saveBeforeMove(problem[idx].id);
+            idx--;
+            if (idx < 0) { // idx 가 음수일때를 방지
+                idx = 0;
+            }
+            printQuestion(idx);
+        }
+
+        function printQuestion(idx) {
+            document.getElementById("inputAnswer").value = '';
+            let problemQuestion = problem[idx].question;
+            let problemId = problem[idx].id;
+            if (answerMap.get(problemId) != null) {
+                document.getElementById("inputAnswer").value = answerMap.get(problemId);
+            }
+            document.getElementById('questionHere').innerText = problemQuestion;
+        }
+
+        function submitButton() {
+            if (isOkayToSubmit()) {
+                sendToServer();
+            } else {
+                alert("아직 문제를 다 풀지 않았습니다!");
+            }
+        }
+
+        function isOkayToSubmit() {
+            if (idx === problem.length - 1 && answerMap.size === problem.length) {
+                return true;
+            }
+            return false;
+        }
+
+        function sendToServer() {
+            alert("서버로 전송하는 메소드가 실행되었습니다.");
+        }
+
+    </script>
+</head>
+<body>
+<nav class="navbar navbar-light bg-light">
+    <td id="username" th:text="|안녕하세요, ${username}|">안녕하세요, USERNAME</td>
+    <table>
+        <tr>
+            <td><button type="button" class="btn btn-secondary" onclick="submitButton()">Submit</button></td>
+        </tr>
+    </table>
+</nav>
+<div id="problemPage">
+    <div id="question">
+        <p id="questionHere" style="font-size: 30px;">Question Here</p>
+    </div>
+
+    <div id="image">
+        <img src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png">
+    </div>
+
+    <div id="answer">
+        <input id="inputAnswer" type="text" name="inputAnswer" class="login-input-box">
+    </div>
+
+    <div id="buttons">
+        <button type="button" class="btn btn-secondary" onclick="previousButton()">Before</button>
+        <button type="button" class="btn btn-secondary" onclick="nextButton()">Next</button>
+    </div>
+</div>
+</body>
+</html>

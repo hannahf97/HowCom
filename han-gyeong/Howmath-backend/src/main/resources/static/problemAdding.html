@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <title>문제 추가 페이지</title>
+</head>
+<body>
+<div id="problem-form">
+    <form action="/api/problem" method="post">
+        <div>
+            <div class="login-id-label">Question</div>
+            <input id="question" type="text" name="question" class="login-input-box">
+
+            <div class="login-id-label">Answer</div>
+            <input id="answer" type="text" name="answer" class="login-input-box">
+
+            <div class="login-id-label">TagNumber</div>
+            <input id="tagNumber" type="text" name="tagNumber" class="login-input-box">
+        </div>
+
+        <label for="grade">Grade</label>
+        <select class="form-select" id="grade" name="grade">
+            <option value="5">5</option>
+            <option value="4">4</option>
+            <option value="3">3</option>
+            <option value="2">2</option>
+            <option value="1">1</option>
+        </select>
+
+        <label for="difficulty">Difficulty</label>
+        <select class="form-select" id="difficulty" name="difficulty">
+            <option value="0">0</option>
+            <option value="3">3</option>
+            <option value="2">2</option>
+            <option value="1">1</option>
+            <option value="-1">-1</option>
+            <option value="-2">-2</option>
+            <option value="-3">-3</option>
+        </select>
+
+        <label for="discrimination">Discrimination</label>
+        <select class="form-select" id="discrimination" name="discrimination">
+            <option value="0">0</option>
+            <option value="3">3</option>
+            <option value="2">2</option>
+            <option value="1">1</option>
+            <option value="-1">-1</option>
+            <option value="-2">-2</option>
+            <option value="-3">-3</option>
+        </select>
+
+        <label for="guess">Guess</label>
+        <select class="form-select" id="guess" name="guess">
+            <option value="0">0</option>
+            <option value="3">3</option>
+            <option value="2">2</option>
+            <option value="1">1</option>
+            <option value="-1">-1</option>
+            <option value="-2">-2</option>
+            <option value="-3">-3</option>
+        </select>
+
+        <div style="text-align: center">
+            <input type="submit" value="제출하기" style="display: inline-block; width: auto; margin-top: 10px">
+        </div>
+    </form>
+</div>
+</body>
+</html>
